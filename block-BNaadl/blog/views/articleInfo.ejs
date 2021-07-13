@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <a href="/articles"><button>Back</button></a>
+  <body>
+    <h1><%= article.title%></h1>
+    <h1><%= article.description%></h1>
+    <h1>
+      <% article.tags.forEach((tag)=>{%>
+      <ul>
+        <li><%= tag%></li>
+      </ul>
+      <% })%>
+    </h1>
+    <h1><%= article.author%></h1>
+
+    <h1><%= article.likes%></h1>
+    <a href="#"
+      ><button>
+        Increase Likes!
+        <input type="number" min="0" step="1" max="10" value="" /></button
+    ></a>
+  </body>
+</html>
