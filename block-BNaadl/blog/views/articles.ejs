@@ -8,15 +8,15 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <a href="/articles/new"><button>Add new Article</button></a>
-    All Articles are listed as below ...
-    <ul>
+    <a href="/articles/new"><button class="add-new">Article +</button></a>
+    <p class="article-page-info">All Articles are listed as below ...</p>
+    <ul class="article-list">
       <% articles.forEach((article, id)=>{%>
-      <li>
-        <h1><%= id+1%>)<%= article.title%></h1>
-        <h2><%= article.description%></h2>
-        <a href="/articles/<%= article._id%>"><button>Show More!</button></a>
-      </li>
+      <div class="article-info">
+        <li>
+          <a href="/articles/<%= article._id%>"><h1><%= article.title%></h1></a>
+        </li>
+      </div>
       <%}) %>
     </ul>
   </body>
