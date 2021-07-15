@@ -9,22 +9,35 @@
   </head>
   <a href="/articles"><button>Back</button></a>
   <body>
-    <h1><%= article.title%></h1>
-    <h1><%= article.description%></h1>
-    <h1>
-      <% article.tags.forEach((tag)=>{%>
-      <ul>
-        <li><%= tag%></li>
-      </ul>
-      <% })%>
-    </h1>
-    <h1><%= article.author%></h1>
-
-    <h1><%= article.likes%></h1>
-    <a href="#"
-      ><button>
-        Increase Likes!
-        <input type="number" min="0" step="1" max="10" value="" /></button
-    ></a>
+    <div class="article-details">
+      <article>
+        <h2>TITLE :</h2>
+        <%= article.title%>
+      </article>
+      <article>
+        <h2>DESCRIPTION :</h2>
+        <%= article.description%>
+      </article>
+      <article>
+        <h2>TAGS :</h2>
+        <% article.tags.forEach((tag, id)=>{%>
+        <div class="tag">
+          <cite><%= tag%></cite>
+        </div>
+        <% })%>
+      </article>
+      <article>
+        <h2>AUTHOR :</h2>
+        <%= article.author%>
+      </article>
+      <article>
+        <h2>LIKES :</h2>
+        <%= article.likes%>
+      </article>
+      <a href="/articles/<%= article._id%>/like/+"><button>😍</button></a>
+      <a href="/articles/<%= article._id%>/like/-"><button>💔</button></a>
+      <a href="/articles/<%= article._id%>/edit"><button>EDIT</button></a>
+      <a href="/articles/<%= article._id%>/delete"><button>DELETE</button></a>
+    </div>
   </body>
 </html>
