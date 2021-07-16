@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <a href="/articles/<%= article._id%>" class="back"><button>BACK</button></a>
+    <form action="/articles/<%= article._id%>/edit" method="POST">
+      <h1>ARTICLE EDIT FORM</h1>
+      <input
+        type="text"
+        name="title"
+        placeholder="Enter Title"
+        value="<%= article.title%>"
+      />
+      <textarea
+        name="description"
+        rows="4"
+        placeholder="<%= article.description%>"
+      ></textarea>
+
+      <input
+        type="text"
+        name="tags"
+        placeholder="Enter the Tags (provide space)"
+        value="<%= article.tags%>"
+      />
+      <input
+        type="text"
+        name="author"
+        placeholder="Enter Author"
+        value="<%= article.author%>"
+      />
+      <button type="submit">CONFIRM</button>
+    </form>
+  </body>
+</html>
