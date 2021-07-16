@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <a href="/articles"><button>Back</button></a>
+  <body>
+    <div class="article-info-body">
+      <div class="comment-section">
+        <h1>Comment on this article</h1>
+        <form action="/articles/<%= article._id%>/comment/new" method="POST">
+          <input type="text" name="author" placeholder="Add your name..." />
+          <textarea
+            name="content"
+            rows="4"
+            placeholder="Add a comment..."
+          ></textarea>
+          <button type="submit">POST</button>
+        </form>
+        <div class="comment-articles">
+          <ul>
+            <%comments.forEach(comment=>{%>
+            <%if(article.id==comment.articleID){%>
+            <li>
+              <cite
+                ><%= comment.author%>
+                <h7 style="font-size: small">posted...</h7>
+              </cite>
+              <p><%= comment.content%></p>
+              <button>Likes : <%= comment.likes%></button>
+              <a href="/comments/<%= comment._id%>/edit/<%= article._id%>"
+                ><button>✍🏻</button></a
+              >
+              <a href="/comments/<%= comment._id%>/delete/<%= article._id%>"
+                ><button>🗑</button></a
+              >
+              <a href="/comments/<%= comment._id%>/like/+/<%= article._id%>"
+                ><button>😍</button></a
+              >
+              <a href="/comments/<%= comment._id%>/like/-/<%= article._id%>"
+                ><button>💔</button></a
+              >
+            </li>
+            <%}})%>
+          </ul>
+        </div>
+      </div>
+      <div class="article-details">
+        <article>
+          <h2>TITLE :</h2>
+          <%= article.title%>
+        </article>
+        <article>
+          <h2>DESCRIPTION :</h2>
+          <%= article.description%>
+        </article>
+        <article>
+          <h2>TAGS :</h2>
+          <% article.tags.forEach((tag, id)=>{%>
+          <div class="tag">
+            <cite><%= tag%></cite>
+          </div>
+          <% })%>
+        </article>
+        <article>
+          <h2>AUTHOR :</h2>
+          <%= article.author%>
+        </article>
+        <article>
+          <h2>LIKES :</h2>
+          <%= article.likes%>
+        </article>
+        <a href="/articles/<%= article._id%>/like/+"><button>😍</button></a>
+        <a href="/articles/<%= article._id%>/like/-"><button>💔</button></a>
+        <a href="/articles/<%= article._id%>/edit"><button>EDIT</button></a>
+        <a href="/articles/<%= article._id%>/delete"><button>DELETE</button></a>
+      </div>
+    </div>
+  </body>
+</html>
